@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using System.IO;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -13,8 +14,11 @@ namespace ShoppingListService.WebApi
             BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            return new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureLogging(builder =>
                 {
                     Log.Logger = new LoggerConfiguration()
@@ -26,5 +30,6 @@ namespace ShoppingListService.WebApi
                 })
                 .UseStartup<Startup>()
                 .Build();
+        }
     }
 }

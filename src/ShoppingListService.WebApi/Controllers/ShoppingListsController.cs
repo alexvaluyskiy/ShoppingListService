@@ -9,11 +9,11 @@ namespace ShoppingListService.WebApi.Controllers
     [Route("api/v1/[controller]/{customerId}")]
     public class ShoppingListsController : Controller
     {
-        private readonly ActorSystem system;
+        private readonly ActorSystem _system;
 
         public ShoppingListsController(ActorSystem system)
         {
-            this.system = system;
+            _system = system;
         }
 
         [HttpGet("items")]
