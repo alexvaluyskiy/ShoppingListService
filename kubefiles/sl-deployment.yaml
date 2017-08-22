@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: checkout-shoppinglist-api
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: checkout-shoppinglist-api
+    spec:
+      containers:
+      - name: checkout-shoppinglist-api
+        image: alexvaluyskiy/kubernetestest:1.0.3
+        ports:
+        - containerPort: 5000

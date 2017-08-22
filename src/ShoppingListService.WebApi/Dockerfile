@@ -1,5 +1,5 @@
-FROM microsoft/dotnet:2.0-runtime
-COPY bin/Release/netcoreapp2.0 /app
+FROM microsoft/aspnetcore:2.0.0-jessie
+COPY publish /app
 WORKDIR /app
 
 EXPOSE 5000/tcp
